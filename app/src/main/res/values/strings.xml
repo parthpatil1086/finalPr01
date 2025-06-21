@@ -1,0 +1,37 @@
+<resources>
+    <!-- Food item names -->
+    <string-array name="food_items">
+        <item>paneer</item>
+        <item>rice</item>
+        <item>roti</item>
+        <item>water</item>
+        <item>paneer</item>
+        <item>rice</item>
+        <item>roti</item>
+        <item>water</item>
+    </string-array>
+
+    <!-- Prices as string -->
+    <string-array name="food_prices">
+        <item>120</item>
+        <item>60</item>
+        <item>20</item>
+        <item>20</item>
+        <item>120</item>
+        <item>60</item>
+        <item>20</item>
+        <item>20</item>
+    </string-array>
+
+    <!-- Image names as strings -->
+    <string-array name="food_images">
+        <item>image1</item>
+        <item>rice</item>
+        <item>roti</item>
+        <item>water</item>
+        <item>image1</item>
+        <item>rice</item>
+        <item>roti</item>
+        <item>water</item>
+    </string-array>
+</resources>
