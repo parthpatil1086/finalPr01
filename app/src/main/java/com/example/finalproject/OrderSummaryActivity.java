@@ -1,13 +1,19 @@
 package com.example.finalproject;
 
-import android.content.Intent;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.CancellationSignal;
+import android.os.ParcelFileDescriptor;
+import android.print.PageRange;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintDocumentInfo;
+import android.print.PrintManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -15,9 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -33,6 +39,7 @@ public class OrderSummaryActivity extends AppCompatActivity {
     DatabaseHelper dbHelper;
     ArrayList<String> orderList;
     int totalPrice = 0;
+    File pdfFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +67,7 @@ public class OrderSummaryActivity extends AppCompatActivity {
             if (orderList.isEmpty()) {
                 Toast.makeText(this, "Order is empty", Toast.LENGTH_SHORT).show();
             } else {
-                exportOrderSummaryAsPDFAndSend(orderList, totalPrice);
+                exportOrderSummaryAsPDFAndPrint(orderList, totalPrice);
             }
         });
     }
@@ -88,7 +95,7 @@ public class OrderSummaryActivity extends AppCompatActivity {
         orderListView.setAdapter(adapter);
     }
 
-    private void exportOrderSummaryAsPDFAndSend(ArrayList<String> orderList, int totalPrice) {
+    private void exportOrderSummaryAsPDFAndPrint(ArrayList<String> orderList, int totalPrice) {
         PdfDocument pdfDocument = new PdfDocument();
         Paint paint = new Paint();
 
@@ -99,29 +106,29 @@ public class OrderSummaryActivity extends AppCompatActivity {
         int y = 60;
         paint.setTextSize(20);
         paint.setFakeBoldText(true);
-        canvas.drawText("Order Summary", 150, y, paint);
-        y += 50;
+        canvas.drawText("Order Summary", 60, y, paint);
+        y += 40;
 
         // Add date/time
         paint.setTextSize(13);
         paint.setFakeBoldText(false);
         String timestamp = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date());
         canvas.drawText("Date: " + timestamp, 20, y, paint);
-        y += 40;
+        y += 30;
 
         for (String order : orderList) {
             canvas.drawText(order, 20, y, paint);
-            y += 30;
+            y += 25;
         }
 
-        y += 30;
+        y += 20;
         canvas.drawText("Total: ₹" + totalPrice, 20, y, paint);
         pdfDocument.finishPage(page);
 
         // Save to file
-        File file = new File(getExternalFilesDir(null), "OrderSummary.pdf");
+        pdfFile = new File(getExternalFilesDir(null), "OrderSummary.pdf");
         try {
-            FileOutputStream fos = new FileOutputStream(file);
+            FileOutputStream fos = new FileOutputStream(pdfFile);
             pdfDocument.writeTo(fos);
             fos.close();
             pdfDocument.close();
@@ -130,12 +137,46 @@ public class OrderSummaryActivity extends AppCompatActivity {
             return;
         }
 
-        // Share
-        Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".provider", file);
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("application/pdf");
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        startActivity(Intent.createChooser(intent, "Send PDF using"));
+        // Print the file
+        printPDF(pdfFile);
+    }
+
+    private void printPDF(File file) {
+        PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
+
+        PrintDocumentAdapter printAdapter = new PrintDocumentAdapter() {
+            @Override
+            public void onLayout(PrintAttributes oldAttributes, PrintAttributes newAttributes,
+                                 CancellationSignal cancellationSignal, LayoutResultCallback callback, Bundle extras) {
+                if (cancellationSignal.isCanceled()) {
+                    callback.onLayoutCancelled();
+                    return;
+                }
+
+                PrintDocumentInfo pdi = new PrintDocumentInfo.Builder("OrderSummary.pdf")
+                        .setContentType(PrintDocumentInfo.CONTENT_TYPE_DOCUMENT)
+                        .build();
+
+                callback.onLayoutFinished(pdi, true);
+            }
+
+            @Override
+            public void onWrite(PageRange[] pages, ParcelFileDescriptor destination,
+                                CancellationSignal cancellationSignal, WriteResultCallback callback) {
+                try (FileInputStream fis = new FileInputStream(file);
+                     FileOutputStream fos = new FileOutputStream(destination.getFileDescriptor())) {
+                    byte[] buf = new byte[1024];
+                    int bytesRead;
+                    while ((bytesRead = fis.read(buf)) > 0) {
+                        fos.write(buf, 0, bytesRead);
+                    }
+                    callback.onWriteFinished(new PageRange[]{PageRange.ALL_PAGES});
+                } catch (IOException e) {
+                    callback.onWriteFailed(e.toString());
+                }
+            }
+        };
+
+        printManager.print("Order Summary", printAdapter, null);
     }
 }

@@ -1,37 +1,70 @@
 <resources>
     <!-- Food item names -->
     <string-array name="food_items">
-        <item>paneer</item>
-        <item>rice</item>
+        <item>solkadhi</item>
+        <item>buttermilktaak</item>
+        <item>shrikhand</item>
+        <item>gulabjamun</item>
+        <item>basundi</item>
+        <item>eggcurry</item>
+        <item>fishcurry</item>
+        <item>panner</item>
+        <item>vegkolapuri</item>
+        <item>chickenkolhapuri</item>
+        <item>muttonkolhapuri</item>
+        <item>vegmaharashtrianthali</item>
+        <item>chickenthali</item>
+        <item>muttonthali</item>
+        <item>chapati</item>
         <item>roti</item>
-        <item>water</item>
-        <item>paneer</item>
-        <item>rice</item>
-        <item>roti</item>
-        <item>water</item>
+        <item>butterroti</item>
+        <item>plainrice</item>
+        <item>masalarice</item>
     </string-array>
 
     <!-- Prices as string -->
     <string-array name="food_prices">
-        <item>120</item>
+        <item>40</item>
+        <item>30</item>
+        <item>50</item>
+        <item>40</item>
         <item>60</item>
-        <item>20</item>
-        <item>20</item>
         <item>120</item>
+        <item>180</item>
+        <item>100</item>
+        <item>120</item>
+        <item>190</item>
+        <item>250</item>
+        <item>180</item>
+        <item>250</item>
+        <item>300</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
         <item>60</item>
-        <item>20</item>
-        <item>20</item>
+        <item>90</item>
     </string-array>
 
     <!-- Image names as strings -->
     <string-array name="food_images">
-        <item>image1</item>
-        <item>rice</item>
+        <item>solkadhi</item>
+        <item>buttermilktaak</item>
+        <item>shrikhand</item>
+        <item>gulabjamun</item>
+        <item>basundi</item>
+        <item>eggcurry</item>
+        <item>fishcurry</item>
+        <item>panner</item>
+        <item>vegkolapuri</item>
+        <item>chickenkolhapuri</item>
+        <item>muttonkolhapuri</item>
+        <item>vegmaharashtrianthali</item>
+        <item>chickenthali</item>
+        <item>muttonthali</item>
+        <item>chapati</item>
         <item>roti</item>
-        <item>water</item>
-        <item>image1</item>
-        <item>rice</item>
-        <item>roti</item>
-        <item>water</item>
+        <item>butterroti</item>
+        <item>plainrice</item>
+        <item>masalarice</item>
     </string-array>
 </resources>

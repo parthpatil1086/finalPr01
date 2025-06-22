@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         Table1 = findViewById(R.id.Table1);
         Table1.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this,MainActivity2.class);

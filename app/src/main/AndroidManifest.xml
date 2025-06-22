@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.finalproject">
 
-    <!-- ✅ Permissions go directly inside <manifest> -->
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
 
@@ -12,13 +12,12 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="FinalProject"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="MenuCard"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject"
         tools:targetApi="31">
 
-        <!-- ✅ FileProvider -->
+        <!-- FileProvider -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -29,7 +28,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <!-- ✅ Activities -->
+        <!-- Activities -->
         <activity
             android:name=".OrderSummaryActivity"
             android:exported="false" />
@@ -38,6 +37,11 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- 🔹 New Launcher Activity: Splash -->
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
