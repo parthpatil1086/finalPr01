@@ -62,6 +62,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM tasks");
     }
+    public void clearOrderTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("tasks", null, null); // Replace with actual table name
+        db.close();
+    }
 
     // Optional: Get all tasks (used in AllOrdersActivity)
     public Cursor getAllOrders() {
