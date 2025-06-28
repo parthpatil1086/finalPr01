@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/cName"
+            android:layout_width="276dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:hint="Enter Customer Name"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="#66000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Select Payment Method"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioUpi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UPI"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/radioCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Credit/Debit Card"
+                android:textColor="@color/black" />
+
+            <RadioButton
+                android:id="@+id/radioQr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QR Code"
+                android:textColor="@color/black" />
+        </RadioGroup>
+
+        <!-- UPI Layout -->
+        <LinearLayout
+            android:id="@+id/upiLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etUpiId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter UPI ID"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="#66000000" />
+        </LinearLayout>
+
+        <!-- Card Layout -->
+        <LinearLayout
+            android:id="@+id/cardLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Card Number"
+                android:inputType="number"
+                android:maxLength="16"
+                android:textColor="@color/black"
+                android:textColorHint="#66000000" />
+
+            <EditText
+                android:id="@+id/etCardExpiry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="MM/YY"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#66000000" />
+
+            <EditText
+                android:id="@+id/etCardCvv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CVV"
+                android:inputType="numberPassword"
+                android:maxLength="3"
+                android:textColor="@color/black"
+                android:textColorHint="#66000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/qrLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/qrImage"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/qrcode" />
+
+            <EditText
+                android:id="@+id/etQrTxnId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Transaction ID"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="#66000000" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnDone"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Done" />
+    </LinearLayout>
+</LinearLayout>

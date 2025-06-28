@@ -2,7 +2,7 @@
     <!-- Food item names -->
     <string-array name="food_items">
         <item>solkadhi</item>
-        <item>buttermilktaak</item>
+        <item>buttermilk</item>
         <item>shrikhand</item>
         <item>gulabjamun</item>
         <item>basundi</item>
@@ -10,9 +10,9 @@
         <item>fishcurry</item>
         <item>panner</item>
         <item>vegkolapuri</item>
-        <item>chickenkolhapuri</item>
-        <item>muttonkolhapuri</item>
-        <item>vegmaharashtrianthali</item>
+        <item>chicken</item>
+        <item>mutton</item>
+        <item>veg thali</item>
         <item>chickenthali</item>
         <item>muttonthali</item>
         <item>chapati</item>
@@ -67,4 +67,28 @@
         <item>plainrice</item>
         <item>masalarice</item>
     </string-array>
+
+    <string-array name="food_descriptions">
+        <item>Solkadhi is a refreshing drink made from kokum and coconut milk. (Quantity: 1 glass)</item>
+        <item>Buttermilk is a tangy, spiced yogurt-based drink. (Quantity: 1 glass)</item>
+        <item>Shrikhand is a sweet dessert made from hung curd and sugar. (Quantity: 1 bowl)</item>
+        <item>Gulab Jamun is a syrupy dessert made of deep-fried milk balls. (Quantity: 2 pieces)</item>
+        <item>Basundi is a thick, sweetened milk dessert flavored with cardamom. (Quantity: 1 bowl)</item>
+        <item>Egg Curry is a spicy curry with boiled eggs. (Quantity: 2 eggs + curry)</item>
+        <item>Fish Curry is a coastal-style fish curry with spices and coconut. (Quantity: 1 portion)</item>
+        <item>Paneer is soft cottage cheese cooked in gravy. (Quantity: 1 bowl)</item>
+        <item>Veg Kolhapuri is a spicy mixed vegetable curry from Kolhapur. (Quantity: 1 bowl)</item>
+        <item>Chicken Curry is a traditional spiced curry with chicken pieces. (Quantity: 1 portion)</item>
+        <item>Mutton Curry is a rich, spicy curry made with tender mutton. (Quantity: 1 portion)</item>
+        <item>Veg Thali includes dal, sabji, rice, chapati, and dessert. (Quantity: 1 full plate)</item>
+        <item>Chicken Thali includes chicken curry, rice, chapati, and dessert. (Quantity: 1 full plate)</item>
+        <item>Mutton Thali includes mutton curry, rice, chapati, and dessert. (Quantity: 1 full plate)</item>
+        <item>Chapati is a soft, unleavened flatbread made from wheat flour. (Quantity: 1 piece)</item>
+        <item>Roti is a dry, round Indian flatbread. (Quantity: 1 piece)</item>
+        <item>Butter Roti is roti brushed with butter for extra taste. (Quantity: 1 piece)</item>
+        <item>Plain Rice is steamed white rice, soft and fluffy. (Quantity: 1 bowl)</item>
+        <item>Masala Rice is spiced rice cooked with herbs and vegetables. (Quantity: 1 bowl)</item>
+    </string-array>
+
+
 </resources>

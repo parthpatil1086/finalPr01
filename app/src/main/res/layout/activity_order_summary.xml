@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/order_summary_layout"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/biil_background"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
@@ -14,10 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="12dp"
+        android:textColor="@color/black"
         android:text="Total: ₹0"
         android:textSize="20sp"
         android:textStyle="bold"
-
         app:layout_constraintBottom_toTopOf="@+id/order_list_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,20 +28,20 @@
     <ListView
         android:id="@+id/order_list_view"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:layout_weight="1"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
+        app:layout_constraintVertical_bias="0.357" />
 
     <Button
         android:id="@+id/reset_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Clear Order"
+        android:textColor="@color/white"
+        android:backgroundTint="#A86531"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -52,11 +52,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Print Bill"
-        app:layout_constraintBottom_toBottomOf="@+id/reset_button"
+        android:textColor="@color/white"
+        android:backgroundTint="#A86531"
+        app:layout_constraintBottom_toTopOf="@+id/reset_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.91" />
+        app:layout_constraintVertical_bias="0.986" />
+
+    <Button
+        android:id="@+id/proceedtopaybtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Proceed to Pay"
+        android:textColor="@color/white"
+        android:backgroundTint="#A86531"
+        app:layout_constraintBottom_toTopOf="@+id/share_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_list_view"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
